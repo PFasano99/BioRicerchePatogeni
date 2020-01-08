@@ -1,0 +1,11 @@
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\bin\Debug\BioRicerchePatogeni.exe.config
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\bin\Debug\BioRicerchePatogeni.exe
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\bin\Debug\BioRicerchePatogeni.pdb
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.Form1.resources
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.Properties.Resources.resources
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.csproj.GenerateResource.Cache
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.exe
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.pdb
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.Form2.resources
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.csprojAssemblyReference.cache
+C:\Users\super\Desktop\Patogeni\BioRicerchePatogeni\BioRicerchePatogeni\obj\Debug\BioRicerchePatogeni.Form3.resources
