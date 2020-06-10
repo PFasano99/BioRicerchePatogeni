@@ -14,7 +14,7 @@ namespace BioRicerchePatogeni
 {
     public partial class Form1 : Form
     {
-
+        
         int[] nClick = new int[96];
         string[] GetD = new string[96];
 
@@ -29,6 +29,7 @@ namespace BioRicerchePatogeni
         string lastIdPi;
         int lastIdPa;
 
+        string patogeno;
 
 
         public Form1()
@@ -953,7 +954,16 @@ namespace BioRicerchePatogeni
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            Reset_function();
+            DialogResult dialogResult = MessageBox.Show("Vuoi resettare la piastra? ATTENZIONE: premendo 'SI' tutti i pozzetti verranno riportati a -", "ATTENZIONE AZIONE INREVERSIBILE", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Reset_function();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+            
         }
 
         private void Reset_2_Click(object sender, EventArgs e)
@@ -1025,7 +1035,7 @@ namespace BioRicerchePatogeni
                 OleDbParameter oleDbParameter;
                 //query = "INSERT INTO Libro (Titolo, Autore, Prezzo, Anno, Editore, Collana, Sconto) VALUES(?,?,?,?,?,?,?);";
 
-                query = "INSERT INTO Piastra (N_Piastra,Data,Tecnico,C_Vegetale,T_Incubazione,Nome_Azienda,Località,Percentuale) VALUES(?,?,?,?,?,?,?,?);";
+                query = "INSERT INTO Piastra (N_Piastra,Data,Tecnico,C_Vegetale,T_Incubazione,Nome_Azienda,Località,Percentuale,Patogeno) VALUES(?,?,?,?,?,?,?,?,?);";
                 connessione.Open();
                 Insert = new OleDbCommand(query, connessione);               
                              
@@ -1109,6 +1119,9 @@ namespace BioRicerchePatogeni
                 oleDbParameter = Insert.Parameters.Add("@Percentuale", OleDbType.Char);
                 oleDbParameter.Value = Percentuale;
 
+                oleDbParameter = Insert.Parameters.Add("@Patogeno", OleDbType.Char);
+                oleDbParameter.Value = patogeno;
+
                 Insert.ExecuteNonQuery();
 
                 connessione.Close();
@@ -1183,6 +1196,8 @@ namespace BioRicerchePatogeni
             string lbl35 = Convert.ToString(dgw_Out.Rows[l].Cells[3].Value);
             lastIdPa = Convert.ToInt32(dgw_Out.Rows[l].Cells[0].Value);
 
+            patogeno = Convert.ToString(dgw_Out.Rows[l].Cells[1].Value);
+
             label33.Text = (lbl33);
             label35.Text = (lbl35 + "%");
 
@@ -1230,12 +1245,69 @@ namespace BioRicerchePatogeni
 
         private void GestisciP_Click(object sender, EventArgs e)
         {
-
+            Form frm4 = new Form4();
+            frm4.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Form frm3 = new Form3();
+            frm3.Show();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Nuova Lettura' permette di abilitare la piastra per l'inserimento dei pozzetti.", "Informazioni tasto: Nuova Lettura", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Gestione Patogeni' permette di abilitare la sezione del programma per la modifica ed eliminazione dei patogeni dal sistema.", "Informazioni tasto: Gestione Patogeni", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Stampa referto Precedente' permette di abilitare la sezione del programma per la ricerca, visualizzazione e stampa di referti precedentemente salvati.", "Informazioni tasto: Stampa Referto Precedente", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Cerca' permette di cercare nel sistema corrispondenze tra la piastra ed i patogeni.", "Informazioni tasto: Cerca", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Inserisci nuovo patogeno' permette di inserire la piastra come un nuovo patogeno salvandola con un nome scelto dal utente.", "Informazioni tasto: Inserisci Nuovo Patogeno", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Reset' permette di pulire la piastra per portarla allo stato iniziale.", "Informazioni tasto: Reset", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Salva' permette di salvare i dati che sono stati inseriti negli appositi campi sopra il tasto, compreso il patogeno e la percentuale di similitudine.", "Informazioni tasto: Salva", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Il tasto 'Stampa' permette di stampare i dati che sono stati inseriti negli appositi campi sopra il tasto, compreso il patogeno e la percentuale di similitudine.", "Informazioni tasto: Stampa", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("La tabella dei risultati mostra tutti i risultati corrispondenti ai parametri inseriti; Per selezionare un patogeno come il risultato adeguato, cliccare una qualsiasi delle caselle sulla riga corrispondente.", "Informazioni: Tabella dei risultati", MessageBoxButtons.OK, MessageBoxIcon.Question);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ogniuno dei tasti della tabella rappresenta un pozzetto identificato da una lettera ed un numero che corrispondono alla controparte reale. Ad ogni click il valore del singolo pozzetto verra modificato da -(negativo)  a /(neutro) e da /(neutro) a +(positivo), da +(positivo) a -(negativo).", "Informazioni: Piastra", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void label33_Click(object sender, EventArgs e)
